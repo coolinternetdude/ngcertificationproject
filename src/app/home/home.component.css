@@ -1,0 +1,8 @@
+header .nav-link {
+  color: black;
+}
+
+header ul {
+  background-color: #e9ecef;
+  border-radius: 10px;
+}

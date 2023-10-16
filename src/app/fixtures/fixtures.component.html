@@ -1,0 +1,42 @@
+<ng-container *ngIf="!fixtureErrorMsg">
+  <table class="table table-borderless">
+    <thead></thead>
+    <tbody>
+      <tr *ngFor="let fixture of teamFixtures">
+        <td>
+          <img
+            [ngClass]="{ fixturesImgClass: true }"
+            src="{{ fixture.teams.home.logo }}"
+            alt="Image not found"
+          />
+        </td>
+        <td>{{ fixture.teams.home.name }}</td>
+        <td>{{ fixture.goals.home }}</td>
+        <td>-</td>
+        <td>{{ fixture.goals.away }}</td>
+        <td>{{ fixture.teams.away.name }}</td>
+        <td>
+          <img
+            [ngClass]="{ fixturesImgClass: true }"
+            src="{{ fixture.teams.away.logo }}"
+            alt="Image not found"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="d-grid gap-2 col-6">
+    <button
+      class="btn btn-primary"
+      type="button"
+      [routerLink]="['/league', currentLeagueCode]"
+    >
+      Back
+    </button>
+  </div>
+</ng-container>
+
+<app-error-utils
+  *ngIf="fixtureErrorMsg"
+  [fixtureErrorMessage]="fixtureErrorMsg"
+></app-error-utils>

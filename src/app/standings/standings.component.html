@@ -1,0 +1,46 @@
+<table class="table table-bordered" *ngIf="!standingsErrorMsg">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col">Name</th>
+      <th scope="col">Games</th>
+      <th scope="col">W</th>
+      <th scope="col">L</th>
+      <th scope="col">D</th>
+      <th scope="col">Goal Difference</th>
+      <th scope="col">Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of leagueTable$ | async; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>
+        <img
+          [ngClass]="{ imageClass: true }"
+          class="img-fluid"
+          src="{{ item.team.logo }}"
+          alt="image not found"
+        />
+      </td>
+      <td>
+        <a [routerLink]="['/fixtures', currentLeagueCode, item.team.id]">{{
+          item.team.name
+        }}</a>
+      </td>
+      <td>{{ item.all.played }}</td>
+      <td>{{ item.all.win }}</td>
+      <td>{{ item.all.lose }}</td>
+      <td>{{ item.all.draw }}</td>
+      <td>{{ item.goalsDiff }}</td>
+      <td>
+        <b>{{ item.points }} </b>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<app-error-utils
+  *ngIf="standingsErrorMsg"
+  [standingErrorMessage]="standingsErrorMsg"
+></app-error-utils>

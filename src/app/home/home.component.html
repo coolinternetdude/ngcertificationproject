@@ -1,0 +1,14 @@
+<header class="d-flex justify-content-center py-3 mb-5">
+  <ul class="nav nav-underline">
+    <li class="nav-item py-1 px-3" *ngFor="let country of countries">
+      <a
+        [routerLink]="['/league', country.code]"
+        class="nav-link"
+        id="Select{{ country }}"
+      >
+        {{ country.name }}</a
+      >
+    </li>
+  </ul>
+</header>
+<router-outlet></router-outlet>
