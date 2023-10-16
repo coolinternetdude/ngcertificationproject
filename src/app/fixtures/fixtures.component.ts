@@ -30,7 +30,7 @@ export class FixturesComponent implements OnInit, OnDestroy {
         .getFixtuesByTeam(teamcode, this.currentLeagueCode)
         .pipe(
           map((res: ResponseFixture) => {
-            return res.response.map((fixture) => {
+            return res.response.map((fixture: Fixture) => {
               return { teams: fixture.teams, goals: fixture.goals };
             });
           }),
